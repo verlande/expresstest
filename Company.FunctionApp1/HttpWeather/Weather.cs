@@ -32,7 +32,7 @@ public class Weather
             await response.WriteStringAsync("Please pass a location on the query string");
             return response;
         }
-        
+        _logger.LogInformation("Function parameters: {Parameters}", location);
         var client = new HttpClient();
         var res = await client.GetStringAsync($"https://wttr.in/{location?.ToUpperInvariant()}?format=%C+%t+%w");
         
